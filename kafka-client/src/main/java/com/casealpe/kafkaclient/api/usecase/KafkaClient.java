@@ -1,7 +1,7 @@
 package com.casealpe.kafkaclient.api.usecase;
 
-public interface KafkaClient<T> {
+public interface KafkaClient {
 
-    void sendMessage(T message, String topic, String key);
+    void sendMessage(String message, String topic, String key);
     
 }
