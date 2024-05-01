@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev
+    username: postgres
+    password: postgres
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 10

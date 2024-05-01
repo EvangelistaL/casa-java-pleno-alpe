@@ -1,0 +1,14 @@
+  server:
+    port: 8081
+
+spring:
+  application:
+    name: alpe-costumers
+  profiles:
+    active: dev
+  flyway:
+    schemas: costumers
+  jpa:
+    properties:
+      hibernate:
+        default_schema: costumers
