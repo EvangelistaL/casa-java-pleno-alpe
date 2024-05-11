@@ -34,8 +34,8 @@ public class DefaultReceiveNfe implements ReceiveNfe {
 
             for (Nfe nfe : csvDataList) {
                 for (Boleto boletoData : nfe.boletos()) {
-                    Boleto boleto = new Boleto(boletoData.codBarras(), boletoData.valorBoleto());
-                    Nfe nfeBuild = new Nfe(nfe.numeroNfe(), nfe.cnpj(), List.of(boleto));
+                    Boleto boleto = new Boleto(boletoData.barCode(), boletoData.value());
+                    Nfe nfeBuild = new Nfe(nfe.nfeNumber(), nfe.involveds(), nfe.value(), nfe.installments(), List.of(boleto));
                     nfeProducer.produce(nfeBuild);
                     nfes.add(nfeBuild);
                 }

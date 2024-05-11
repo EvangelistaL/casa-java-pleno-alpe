@@ -1,6 +1,25 @@
 server:
-  port: 8082
+  port: 8083
 
 spring:
   application:
     name: nfe-api
+  profiles:
+    active: dev
+  flyway:
+    schemas: nfe
+  jpa:
+    properties:
+      hibernate:
+        default_schema: nfe
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: meu-grupo
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer

@@ -16,6 +16,6 @@ public class DefaultNfeProducer implements NfeProducer {
 
     @Override
     public void produce(Nfe nfe) {
-        this.kafkaClient.sendMessage(nfe.toString(), TOPIC, nfe.numeroNfe());
+        this.kafkaClient.sendMessage(nfe.toString(), TOPIC, nfe.nfeNumber());
     }
 }
