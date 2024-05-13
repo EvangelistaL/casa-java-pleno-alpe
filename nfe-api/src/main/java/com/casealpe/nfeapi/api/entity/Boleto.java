@@ -1,5 +1,6 @@
 package com.casealpe.nfeapi.api.entity;
 
+import com.casealpe.nfeapi.api.model.BoletoStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -24,4 +25,9 @@ public class Boleto implements Serializable {
     @NotNull
     @Column(name = "value")
     private BigDecimal value;
+
+    @NotNull
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private BoletoStatus status;
 }

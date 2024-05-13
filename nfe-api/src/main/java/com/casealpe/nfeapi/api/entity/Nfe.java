@@ -1,5 +1,6 @@
 package com.casealpe.nfeapi.api.entity;
 
+import com.casealpe.nfeapi.api.model.NfeStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -26,6 +27,11 @@ public class Nfe implements Serializable {
     @NotNull
     @Column(name = "value")
     private BigDecimal value;
+
+    @NotNull
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private NfeStatus status;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "nfe_id")

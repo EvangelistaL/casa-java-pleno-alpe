@@ -1,4 +1,4 @@
-package com.casealpe.webhookreceiver.api.model;
+package com.casealpe.nfeapi.api.model;
 
 import java.math.BigDecimal;
 import java.util.List;
