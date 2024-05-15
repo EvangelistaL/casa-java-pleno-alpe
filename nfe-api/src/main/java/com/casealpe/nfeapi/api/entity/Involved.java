@@ -21,6 +21,10 @@ public class Involved implements Serializable {
     @Column(name = "identification_value")
     private String identificationValue;
 
+    @NotBlank
+    @Column(name = "identification_value")
+    private String legalName;
+
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(name = "type")
