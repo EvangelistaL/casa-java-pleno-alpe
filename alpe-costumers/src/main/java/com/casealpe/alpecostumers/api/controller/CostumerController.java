@@ -11,4 +11,8 @@ public interface CostumerController {
     @GetMapping(path = "/{identificationValue}")
     @ResponseStatus(HttpStatus.OK)
     Costumer retrieveCostumerById(@PathVariable String identificationValue);
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    Costumer createCostumer(@RequestBody Costumer costumer);
 }

@@ -4,5 +4,5 @@ import com.casealpe.nfeapi.api.entity.Boleto;
 
 public interface UpdateBoleto {
 
-    Boleto execute(Long id, Boleto boleto);
+    Boleto execute(Boleto boleto);
 }
