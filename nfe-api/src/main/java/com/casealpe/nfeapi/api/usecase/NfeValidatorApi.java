@@ -1,6 +1,6 @@
 package com.casealpe.nfeapi.api.usecase;
 
-import com.casealpe.nfeapi.api.entity.Nfe;
+import com.casealpe.nfeapi.api.model.Nfe;
 
 public interface NfeValidatorApi {
 

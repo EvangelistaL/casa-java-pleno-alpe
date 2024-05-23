@@ -29,8 +29,4 @@ public class Involved implements Serializable {
     @NotNull
     @Column(name = "type")
     private InvolvedType type;
-
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name = "nfe_id")
-    private Nfe nfe;
 }

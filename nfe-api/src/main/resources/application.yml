@@ -26,3 +26,6 @@ spring:
 
 costumer-api:
   base-url: "http://localhost:8081"
+
+governament-api:
+  base-url: "http://localhost:8084"

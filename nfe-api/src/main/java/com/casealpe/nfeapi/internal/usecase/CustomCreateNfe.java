@@ -13,10 +13,9 @@ public class CustomCreateNfe implements CreateNfe {
 
     private final NfeRepository nfeRepository;
 
-    private final BoletoProducer boletoProducer;
-
     @Override
     public Nfe execute(com.casealpe.nfeapi.api.model.Nfe nfe) {
-        return null;
+
+        return this.nfeRepository.save();
     }
 }

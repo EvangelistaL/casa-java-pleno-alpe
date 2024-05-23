@@ -38,7 +38,7 @@ public class Nfe implements Serializable {
     private Set<Boleto> boletos;
 
     @OneToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
-            mappedBy = "nfe")
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "involved_id")
     private List<Involved> involveds;
 }
