@@ -15,7 +15,7 @@ public class DefaultBoletoProducer implements BoletoProducer {
     private final KafkaClient kafkaClient;
 
     @Override
-    public void produce(Boleto boleto) {
+    public void sendBoletoEvent(Boleto boleto) {
         this.kafkaClient.sendMessage(boleto.toString(), TOPIC, boleto.getBarCode());
     }
 }

@@ -21,9 +21,11 @@ public class ConvertNfeDtoToEntity {
     }
 
     private static void setBoletos(Nfe nfe, com.casealpe.nfeapi.api.model.Nfe nfeDto){
-        Set<Boleto> boletos = nfeDto.boletos().stream()
-                .map(ConvertBoletoDtoToEntity::convert)
-                .collect(Collectors.toSet());
-        nfe.setBoletos(boletos);
+        if (!nfeDto.boletos().isEmpty()){
+            Set<Boleto> boletos = nfeDto.boletos().stream()
+                    .map(ConvertBoletoDtoToEntity::convert)
+                    .collect(Collectors.toSet());
+            nfe.setBoletos(boletos);
+        }
     }
 }

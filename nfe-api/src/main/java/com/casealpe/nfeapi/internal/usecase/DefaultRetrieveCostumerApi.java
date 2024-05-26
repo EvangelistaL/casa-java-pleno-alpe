@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class DefaultRetrieveCostumerApi implements RetrieveCostumerApi {
@@ -22,7 +20,7 @@ public class DefaultRetrieveCostumerApi implements RetrieveCostumerApi {
     private final CreateCostumerApi createCostumerApi;
 
     @Override
-    public List<Involved> execute(com.casealpe.nfeapi.api.model.Involved involved) {
+    public Involved execute(com.casealpe.nfeapi.api.model.Involved involved) {
             WebClient webClient = WebClient.builder()
                     .baseUrl(baseUrl)
                     .build();
@@ -37,7 +35,7 @@ public class DefaultRetrieveCostumerApi implements RetrieveCostumerApi {
                         }
                     });
 
-            return List.of(convertToInvolved(costumer.block()));
+            return convertToInvolved(costumer.block());
     }
 
     private Involved convertToInvolved(Costumer costumer){

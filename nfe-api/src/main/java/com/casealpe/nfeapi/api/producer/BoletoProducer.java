@@ -4,5 +4,5 @@ import com.casealpe.nfeapi.api.entity.Boleto;
 
 public interface BoletoProducer {
 
-    void produce(Boleto boleto);
+    void sendBoletoEvent(Boleto boleto);
 }
