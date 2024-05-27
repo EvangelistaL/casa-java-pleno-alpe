@@ -1,8 +1,9 @@
 package com.casealpe.nfeapi.internal.usecase;
 
 import com.casealpe.nfeapi.api.entity.Nfe;
-import com.casealpe.nfeapi.api.exception.InvalidNfeException;
 import com.casealpe.nfeapi.api.model.Involved;
+import com.casealpe.nfeapi.api.model.NfeGovernamentApi;
+import com.casealpe.nfeapi.api.model.NfeStatus;
 import com.casealpe.nfeapi.api.producer.BoletoProducer;
 import com.casealpe.nfeapi.api.repository.InvolvedRepository;
 import com.casealpe.nfeapi.api.specification.InvolvedSpecification;
@@ -34,20 +35,20 @@ public class DefaultProcessNfe implements ProcessNfe {
 
     @Override
     public Nfe execute(com.casealpe.nfeapi.api.model.Nfe nfe) {
-        isAValidNfe(nfe);
         List<com.casealpe.nfeapi.api.entity.Involved> involveds = nfe.involveds().stream()
                 .map(this::retrieveCostumer)
                 .toList();
         Nfe nfeTransformed = ConvertNfeDtoToEntity.convert(nfe);
+        isAValidNfe(nfeTransformed);
         setInvolveds(involveds, nfeTransformed);
         sendBoletoEvent(nfeTransformed);
         return createNfe.execute(nfeTransformed);
     }
 
-    private void isAValidNfe(com.casealpe.nfeapi.api.model.Nfe nfe){
-         if (!nfeValidator.execute(nfe)){
-             throw new InvalidNfeException();
-         }
+    private void isAValidNfe(Nfe nfe){
+         if (nfeValidator.execute(new NfeGovernamentApi(nfe.getNfeNumber(), nfe.getValue()))){
+             nfe.setStatus(NfeStatus.VALID);
+         } else nfe.setStatus(NfeStatus.INVALID);
     }
 
     private com.casealpe.nfeapi.api.entity.Involved retrieveCostumer(Involved involved){

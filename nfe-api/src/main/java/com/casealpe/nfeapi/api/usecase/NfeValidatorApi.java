@@ -1,8 +1,8 @@
 package com.casealpe.nfeapi.api.usecase;
 
-import com.casealpe.nfeapi.api.model.Nfe;
+import com.casealpe.nfeapi.api.model.NfeGovernamentApi;
 
 public interface NfeValidatorApi {
 
-    boolean execute(Nfe nfe);
+    boolean execute(NfeGovernamentApi nfe);
 }

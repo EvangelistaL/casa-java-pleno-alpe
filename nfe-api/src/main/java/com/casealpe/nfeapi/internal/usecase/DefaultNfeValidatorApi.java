@@ -1,6 +1,6 @@
 package com.casealpe.nfeapi.internal.usecase;
 
-import com.casealpe.nfeapi.api.model.Nfe;
+import com.casealpe.nfeapi.api.model.NfeGovernamentApi;
 import com.casealpe.nfeapi.api.usecase.NfeValidatorApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class DefaultNfeValidatorApi implements NfeValidatorApi {
     private String baseUrl;
 
     @Override
-    public boolean execute(Nfe nfe) {
+    public boolean execute(NfeGovernamentApi nfe) {
         WebClient webClient = WebClient.builder()
                 .baseUrl(baseUrl)
                 .build();
