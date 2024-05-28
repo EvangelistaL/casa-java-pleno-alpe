@@ -1,0 +1,23 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: charging-api
+    profiles:
+      active: dev
+    jpa:
+      properties:
+        hibernate:
+          default_schema: charging-api
+    kafka:
+      consumer:
+        bootstrap-servers: localhost:9092
+        group-id: charging-group
+        auto-offset-reset: earliest
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      producer:
+        bootstrap-servers: localhost:9092
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer

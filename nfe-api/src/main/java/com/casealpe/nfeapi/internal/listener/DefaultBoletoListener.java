@@ -1,8 +1,8 @@
 package com.casealpe.nfeapi.internal.listener;
 
-import com.casealpe.nfeapi.api.listener.NfeListener;
-import com.casealpe.nfeapi.api.model.Nfe;
-import com.casealpe.nfeapi.api.usecase.ProcessNfe;
+import com.casealpe.nfeapi.api.entity.Boleto;
+import com.casealpe.nfeapi.api.listener.BoletoListener;
+import com.casealpe.nfeapi.api.usecase.UpdateBoleto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -10,20 +10,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
-@Slf4j
 @RequiredArgsConstructor
-public class DefaultNfeListener implements NfeListener {
-
-    private final ProcessNfe processNfe;
+@Slf4j
+public class DefaultBoletoListener implements BoletoListener {
 
     private final ObjectMapper objectMapper;
 
+    private final UpdateBoleto updateBoleto;
+
     @Override
-    public void listenNfeTopic(String nfe) {
+    public void listenBankSlipRegisteredTopic(String boleto) {
         try {
-            log.info("Recebendo nfe");
-            Nfe nfeReceived = objectMapper.readValue(nfe, Nfe.class);
-            this.processNfe.execute(nfeReceived);
+            log.info("Recebendo boleto processado");
+            Boleto boletoReceived = objectMapper.readValue(boleto, Boleto.class);
+            this.updateBoleto.execute(boletoReceived);
         } catch (RuntimeException e) {
             log.error("Erro no processamento da mensagem", e);
         } catch (JsonProcessingException e){
