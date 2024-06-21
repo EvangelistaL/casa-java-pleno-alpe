@@ -14,7 +14,7 @@ public class DefaultValidateNfe implements ValidateNfe {
     @Override
     public boolean execute(Nfe nfe) {
         if (nfe.nfeNumber().length() != 9){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            return false;
         }
         return true;
     }

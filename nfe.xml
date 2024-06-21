@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NotasFiscais>
+    <Nfe>
+        <nfeNumber>NFE12345</nfeNumber>
+        <status>NOT_VALIDATED</status>
+        <value>350.00</value>
+        <Involveds>
+            <Involved>
+                <legalName>Company A</legalName>
+                <identificationValue>123456789</identificationValue>
+                <type>PAYEE</type>
+            </Involved>
+            <Involved>
+                <legalName>Company B</legalName>
+                <identificationValue>109876543</identificationValue>
+                <type>PAYER</type>
+            </Involved>
+        </Involveds>
+        <Boletos>
+            <Boleto>
+                <barCode>1234567890</barCode>
+                <value>150.00</value>
+                <status>NOT_REGISTERED</status>
+            </Boleto>
+            <Boleto>
+                <barCode>0987654321</barCode>
+                <value>200.00</value>
+                <status>NOT_REGISTERED</status>
+            </Boleto>
+        </Boletos>
+    </Nfe>
+</NotasFiscais>
